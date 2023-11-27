@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome To The Note Taking Website</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+    </nav>
+    <main>
+        <p class="paramain">
+            Welcome to my website, a digital haven for your thoughts and ideas. Whether it's jotting down quick notes, organizing your to-dos, or crafting meaningful prose, we're here to help you capture and curate your thoughts effortlessly. Join us in the art of note-taking and unlock your creativity! Explore a user-friendly interface designed to streamline your writing experience. With easy synchronization across devices, you can access your notes anytime, anywhere. Your ideas, stories, and inspiration are just a click away. Start your journey to organized and inspired note-taking today!</p>
+        <div id="app">
+            <!-- <h1>Simple Note-Taking App</h1> -->
+            <textarea id="new-note" placeholder="Enter a new note"></textarea>
+            <button id="add-note">Add Note</button>
+            <div id="notes"></div>
+        </div>
+       <script>
+            const newNote = document.getElementById('new-note');
+            const addNote = document.getElementById('add-note');
+            const notes = document.getElementById('notes');
+    
+            addNote.addEventListener('click', () => {
+                const noteText = newNote.value.trim();
+    
+                if (noteText) {
+                    const noteDiv = document.createElement('div');
+                    noteDiv.className = 'note';
+                    noteDiv.innerHTML = `<p>${noteText}</p><button class="delete-note">Delete</button>`;
+                    notes.appendChild(noteDiv);
+                    newNote.value = '';
+                }
+            });
+    
+            notes.addEventListener('click', (event) => {
+                if (event.target.classList.contains('delete-note')) {
+                    event.target.parentElement.remove();
+                }
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2023 Note taking Website</p>
+    </footer>
+</body>
+</html>
